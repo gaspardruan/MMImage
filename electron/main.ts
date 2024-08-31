@@ -1,8 +1,12 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 import { createWindow } from './window';
+import { IpcEvents } from '../typings/ipc-events';
 
 async function onReady() {
   createWindow();
+  ipcMain.on(IpcEvents.SAY_HELLO, (_, msg) => {
+    console.log('Got msg from render: ' + msg);
+  });
 }
 
 app.whenReady().then(onReady);

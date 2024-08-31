@@ -11,3 +11,5 @@ export async function setup() {
 
   createRoot(document.getElementById('root')!).render(app);
 }
+
+window.MMImage.sayHello("Hello, I'am render process!");
