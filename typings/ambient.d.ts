@@ -1,5 +1,3 @@
 interface Window {
-  MMImage: {
-    sayHello(msg: string): void;
-  };
+  MMImage: import('../electron/preload').ElectronHandler;
 }

@@ -1,12 +1,11 @@
-import { app, BrowserWindow, ipcMain } from 'electron';
+import { app, BrowserWindow, ipcMain, nativeTheme } from 'electron';
 import { createWindow } from './window';
 import { IpcEvents } from '../typings/ipc-events';
 
 async function onReady() {
+  setupNativeTheme();
+
   createWindow();
-  ipcMain.on(IpcEvents.SAY_HELLO, (_, msg) => {
-    console.log('Got msg from render: ' + msg);
-  });
 }
 
 app.whenReady().then(onReady);
@@ -27,3 +26,20 @@ app.on('activate', () => {
     createWindow();
   }
 });
+
+function isNativeThemeSource(
+  val: unknown,
+): val is typeof nativeTheme.themeSource {
+  return typeof val === 'string' && ['dark', 'light', 'system'].includes(val);
+}
+
+/**
+ * Handle theme changes.
+ */
+function setupNativeTheme() {
+  ipcMain.on(IpcEvents.SET_NATIVE_THEME, (_, source: string) => {
+    if (isNativeThemeSource(source)) {
+      nativeTheme.themeSource = source;
+    }
+  });
+}

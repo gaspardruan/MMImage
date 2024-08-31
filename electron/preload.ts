@@ -5,6 +5,11 @@ const electronHandler = {
   sayHello(msg: string) {
     ipcRenderer.send(IpcEvents.SAY_HELLO, msg);
   },
+  setNativeTheme(theme: 'light' | 'dark' | 'system') {
+    ipcRenderer.send(IpcEvents.SET_NATIVE_THEME, theme);
+  },
 };
 
 contextBridge.exposeInMainWorld('MMImage', electronHandler);
+
+export type ElectronHandler = typeof electronHandler;
