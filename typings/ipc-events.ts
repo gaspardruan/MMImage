@@ -1,4 +1,5 @@
 export enum IpcEvents {
+  GET_IMAGE_DATA = 'GET_IMAGE_DATA',
   SAY_HELLO = 'SAY_HELLO',
   SET_NATIVE_THEME = 'SET_NATIVE_THEME',
 }

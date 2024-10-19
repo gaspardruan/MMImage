@@ -1,5 +1,7 @@
-import { IpcEvents } from './../typings/ipc-events';
 import { ipcRenderer, contextBridge } from 'electron';
+
+import { IpcEvents } from './../typings/ipc-events';
+import { ImageAndBeauty } from '../typings/interface';
 
 const electronHandler = {
   sayHello(msg: string) {
@@ -7,6 +9,9 @@ const electronHandler = {
   },
   setNativeTheme(theme: 'light' | 'dark' | 'system') {
     ipcRenderer.send(IpcEvents.SET_NATIVE_THEME, theme);
+  },
+  getImageData(): Promise<ImageAndBeauty> {
+    return ipcRenderer.invoke(IpcEvents.GET_IMAGE_DATA);
   },
 };
 

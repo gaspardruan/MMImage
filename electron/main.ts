@@ -1,10 +1,11 @@
 import { app, BrowserWindow, ipcMain, nativeTheme } from 'electron';
 import { createWindow } from './window';
 import { IpcEvents } from '../typings/ipc-events';
+import { setupData } from './data';
 
 async function onReady() {
   setupNativeTheme();
-
+  setupData();
   createWindow();
 }
 
