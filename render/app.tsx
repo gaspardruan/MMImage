@@ -1,7 +1,5 @@
 import { getTheme } from './theme';
 import { useGlobalStore } from './state/global';
-import { DefaultThemes } from '../typings/themes-defaults';
-import { Button } from '@blueprintjs/core';
 
 import './less/root.less';
 
@@ -29,19 +27,11 @@ const loadTheme = (_theme: string, isUsingSystemTheme: boolean) => {
 };
 
 const App = () => {
-  const { theme, isUsingSystemTheme, setTheme } = useGlobalStore();
+  const { theme, isUsingSystemTheme } = useGlobalStore();
   console.log(theme, isUsingSystemTheme);
   loadTheme(theme, isUsingSystemTheme);
 
   console.log(localStorage.getItem('global-storage'));
-
-  const toggleTheme = () => {
-    if (theme === DefaultThemes.DARK) {
-      setTheme(DefaultThemes.LIGHT);
-    } else {
-      setTheme(DefaultThemes.DARK);
-    }
-  };
 
   return (
     <div className="container">
