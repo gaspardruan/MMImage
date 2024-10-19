@@ -1,7 +1,12 @@
+import { useEffect } from 'react';
+
 import { getTheme } from './theme';
 import { useGlobalStore } from './state/global';
+import { useImageState } from './state/image';
 
 import './less/root.less';
+import { Divider } from '@blueprintjs/core';
+import { LeftPanel } from './components/left-panel';
 
 const loadTheme = (_theme: string, isUsingSystemTheme: boolean) => {
   const tag: HTMLStyleElement | null = document.querySelector(
@@ -26,16 +31,39 @@ const loadTheme = (_theme: string, isUsingSystemTheme: boolean) => {
   }
 };
 
+const isLaunchedInOneDay = (time1: number, time2: number): boolean => {
+  const oneDay = 24 * 60 * 60 * 1000;
+  const diff = Math.abs(time1 - time2);
+  return diff <= oneDay;
+};
+
 const App = () => {
   const { theme, isUsingSystemTheme } = useGlobalStore();
-  console.log(theme, isUsingSystemTheme);
   loadTheme(theme, isUsingSystemTheme);
 
-  console.log(localStorage.getItem('global-storage'));
+  const { lastUpdateTime, setData, setLastUpdateTime } = useImageState();
+
+  useEffect(() => {
+    if (!isLaunchedInOneDay(lastUpdateTime, new Date().getTime())) {
+      window.MMImage.getImageData().then((res) => {
+        setData(res.latest, res.beauty);
+        setLastUpdateTime(new Date().getTime());
+      });
+    }
+  }, [lastUpdateTime, setData, setLastUpdateTime]);
 
   return (
     <div className="container">
-      <h1>Hello, World!</h1>
+      <div className="left-panel">
+        <LeftPanel />
+      </div>
+      <Divider />
+      <div className="right-content">
+        <img
+          alt="[XIUREN秀人网] 2024.10.09 NO.9252 雅茹老师 [61P]"
+          src="http://www.newxiuren.com/uploadfiles/xiuren/2024/20249252/2024925201.jpg?0.6348023299801688"
+        />
+      </div>
     </div>
   );
 };

@@ -4,7 +4,7 @@ import { VITE_DEV_SERVER_URL, RENDERER_DIST, __dirname } from './env';
 
 function getMainWindowOptions(): Electron.BrowserWindowConstructorOptions {
   return {
-    width: 1400,
+    width: 1200,
     height: 900,
     minHeight: 600,
     minWidth: 600,

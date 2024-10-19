@@ -14,10 +14,56 @@ body {
 
 .container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   height: 100vh;
   width: 100vw;
   margin: 0;
   padding: 0;
   max-width: unset;
+
+  .bp5-divider {
+    margin: 5px 0;
+  }
+
+  .left-panel {
+    width: 250px;
+    background-color: @background-1;
+    user-select: none;
+
+    ul {
+      list-style: none;
+      padding: 15px;
+      margin: 0;
+
+      li {
+        font-size: 1rem;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        color: @text-color-1;
+        opacity: 0.8;
+
+        &:hover {
+          opacity: 1;
+        }
+
+        .bp5-menu-item {
+          outline: none;
+        }
+      }
+    }
+
+    .bp5-menu-divider {
+      margin: 0 5px;
+    }
+  }
+
+  .right-content {
+    width: 100%;
+    background-color: @background-1;
+    padding: 20px;
+  }
+}
+
+button:focus {
+  outline: none;
 }
