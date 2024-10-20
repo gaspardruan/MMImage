@@ -5,6 +5,8 @@ export enum Section {
   Settings = '设置',
 }
 
+export const LIST_STEP = 24;
+
 export interface ImageSuit {
   id: number;
   name: string;
@@ -13,20 +15,17 @@ export interface ImageSuit {
   time: Date;
 }
 
-export interface ImageSuitSortByName {
-  [key: string]: { images: ImageSuit[]; num: number };
+export interface ImageCollection {
+  num: number;
+  images: ImageSuit[];
 }
 
-export interface NameList {
-  [key: string]: string[];
-}
-
-export interface BeautyList {
-  names: NameList;
-  images: ImageSuitSortByName;
+export interface BeautySuit {
+  names: Record<string, string[]>;
+  images: Record<string, ImageCollection>;
 }
 
 export interface ImageAndBeauty {
   latest: ImageSuit[];
-  beauty: BeautyList;
+  beauty: BeautySuit;
 }

@@ -1,15 +1,15 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-import { ImageSuit, BeautyList } from '../../typings/interface';
+import { ImageSuit, BeautySuit } from '../../typings/interface';
 
 interface ImageState {
   latest: ImageSuit[];
-  beauty: BeautyList;
+  beauty: BeautySuit;
   lastUpdateTime: number;
-  setData: (latest: ImageSuit[], beauty: BeautyList) => void;
+  setData: (latest: ImageSuit[], beauty: BeautySuit) => void;
   setLatest: (latest: ImageSuit[]) => void;
-  setBeauty: (beauty: BeautyList) => void;
+  setBeauty: (beauty: BeautySuit) => void;
   setLastUpdateTime: (lastUpdateTime: number) => void;
 }
 
