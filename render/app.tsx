@@ -7,7 +7,7 @@ import { useImageState } from './state/image';
 import './less/root.less';
 import { Divider } from '@blueprintjs/core';
 import { LeftPanel } from './components/left-panel';
-import { RightPanel } from './components/right-content';
+import { RightContent } from './components/right-content';
 
 const loadTheme = (_theme: string, isUsingSystemTheme: boolean) => {
   const tag: HTMLStyleElement | null = document.querySelector(
@@ -60,7 +60,7 @@ const App = () => {
       </div>
       <Divider />
       <div className="right-content">
-        <RightPanel />
+        <RightContent />
       </div>
     </div>
   );

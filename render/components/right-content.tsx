@@ -6,7 +6,7 @@ import { SectionCollection } from './section-collection';
 import { SectionExplore } from './section-explore';
 import { SectionSettings } from './section-settings';
 
-export const RightPanel = () => {
+export const RightContent = () => {
   const { activeSection } = useNavigationStore();
 
   if (activeSection === Section.Explore) {
