@@ -29,3 +29,8 @@ export interface ImageAndBeauty {
   latest: ImageSuit[];
   beauty: BeautySuit;
 }
+
+export interface ImageShow {
+  original: string;
+  thumbnail: string;
+}

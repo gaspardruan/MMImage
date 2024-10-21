@@ -1,4 +1,4 @@
-import { ImageSuit } from './../typings/interface';
+import { ImageSuit, ImageShow } from './../typings/interface';
 
 export const BASE_URL = 'http://newxiuren.com/uploadfiles/';
 
@@ -21,15 +21,16 @@ export function getImageURLs(suit: ImageSuit) {
   );
 }
 
-export function getImages(suit: ImageSuit) {
-  return Array.from({ length: suit.count }, async (_, i) => {
+export function getImages(suit: ImageSuit): ImageShow[] {
+  return Array.from({ length: suit.count }, (_, i) => {
     const url = `${BASE_URL}${suit.prefix}/${getYearFromId(suit.id)}/${
       suit.id
     }/${suit.id * 100 + i + 1}.jpg`;
-    const img = new Image();
-    img.src = url;
-    await img.decode();
-    return img;
+
+    return {
+      original: url,
+      thumbnail: url,
+    };
   });
 }
 
