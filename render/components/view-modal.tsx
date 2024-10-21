@@ -20,7 +20,14 @@ export const ViewModal = ({ isOpen, data, onClose }: ViewModalPropas) => {
       backdropClassName="backdrop-custom"
     >
       <div className="view-modal">
-        <ImageGallery items={images} thumbnailPosition="left" />
+        <ImageGallery
+          items={images}
+          thumbnailPosition="left"
+          showIndex={true}
+          slideDuration={250}
+          infinite={false}
+          lazyLoad={true}
+        />
       </div>
     </Overlay2>
   );
