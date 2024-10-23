@@ -1,67 +1,43 @@
+import { Divider, Button } from '@blueprintjs/core';
+import { useImageState } from '../state/image';
+
 export const SectionBeauty = () => {
+  const { beauty } = useImageState();
+  const nameMap = beauty.names;
+  const images = beauty.images;
+
   return (
-    <div className="scroll-container">
-      <div className="image-grid">
-        <img
-          alt="[XIUREN秀人网] 2024.10.09 NO.9252 雅茹老师 [61P]"
-          src="http://www.newxiuren.com/uploadfiles/xiuren/2024/20249252/2024925201.jpg?0.6348023299801688"
-        />
-        <img
-          alt="[XIUREN秀人网] 2024.10.09 NO.9252 雅茹老师 [61P]"
-          src="http://www.newxiuren.com/uploadfiles/xiuren/2024/20249252/2024925201.jpg?0.6348023299801688"
-        />
-        <img
-          alt="[XIUREN秀人网] 2024.10.09 NO.9252 雅茹老师 [61P]"
-          src="http://www.newxiuren.com/uploadfiles/xiuren/2024/20249252/2024925201.jpg?0.6348023299801688"
-        />
-        <img
-          alt="[XIUREN秀人网] 2024.10.09 NO.9252 雅茹老师 [61P]"
-          src="http://www.newxiuren.com/uploadfiles/xiuren/2024/20249252/2024925201.jpg?0.6348023299801688"
-        />
-        <img
-          alt="[XIUREN秀人网] 2024.10.09 NO.9252 雅茹老师 [61P]"
-          src="http://www.newxiuren.com/uploadfiles/xiuren/2024/20249252/2024925201.jpg?0.6348023299801688"
-        />
-        <img
-          alt="[XIUREN秀人网] 2024.10.09 NO.9252 雅茹老师 [61P]"
-          src="http://www.newxiuren.com/uploadfiles/xiuren/2024/20249252/2024925201.jpg?0.6348023299801688"
-        />
-        <img
-          alt="[XIUREN秀人网] 2024.10.09 NO.9252 雅茹老师 [61P]"
-          src="http://www.newxiuren.com/uploadfiles/xiuren/2024/20249252/2024925201.jpg?0.6348023299801688"
-        />
-        <img
-          alt="[XIUREN秀人网] 2024.10.09 NO.9252 雅茹老师 [61P]"
-          src="http://www.newxiuren.com/uploadfiles/xiuren/2024/20249252/2024925201.jpg?0.6348023299801688"
-        />
-        <img
-          alt="[XIUREN秀人网] 2024.10.09 NO.9252 雅茹老师 [61P]"
-          src="http://www.newxiuren.com/uploadfiles/xiuren/2024/20249252/2024925201.jpg?0.6348023299801688"
-        />
-        <img
-          alt="[XIUREN秀人网] 2024.10.09 NO.9252 雅茹老师 [61P]"
-          src="http://www.newxiuren.com/uploadfiles/xiuren/2024/20249252/2024925201.jpg?0.6348023299801688"
-        />
-        <img
-          alt="[XIUREN秀人网] 2024.10.09 NO.9252 雅茹老师 [61P]"
-          src="http://www.newxiuren.com/uploadfiles/xiuren/2024/20249252/2024925201.jpg?0.6348023299801688"
-        />
-        <img
-          alt="[XIUREN秀人网] 2024.10.09 NO.9252 雅茹老师 [61P]"
-          src="http://www.newxiuren.com/uploadfiles/xiuren/2024/20249252/2024925201.jpg?0.6348023299801688"
-        />
-        <img
-          alt="[XIUREN秀人网] 2024.10.09 NO.9252 雅茹老师 [61P]"
-          src="http://www.newxiuren.com/uploadfiles/xiuren/2024/20249252/2024925201.jpg?0.6348023299801688"
-        />
-        <img
-          alt="[XIUREN秀人网] 2024.10.09 NO.9252 雅茹老师 [61P]"
-          src="http://www.newxiuren.com/uploadfiles/xiuren/2024/20249252/2024925201.jpg?0.6348023299801688"
-        />
-        <img
-          alt="[XIUREN秀人网] 2024.10.09 NO.9252 雅茹老师 [61P]"
-          src="http://www.newxiuren.com/uploadfiles/xiuren/2024/20249252/2024925201.jpg?0.6348023299801688"
-        />
+    <div className="section-beauty">
+      <div className="letter-map">
+        {Object.keys(nameMap).map((letter) => (
+          <a key={letter} href={`#beauty-letter-${letter}`} className="letter">
+            {letter}
+          </a>
+        ))}
+      </div>
+
+      <div className="scroll-container">
+        <div className="name-list">
+          {Object.keys(nameMap).map((letter) => {
+            return (
+              <div key={letter}>
+                <h2 id={`beauty-letter-${letter}`}>
+                  {letter}
+                  <Divider />
+                </h2>
+                <div className="name-block">
+                  {nameMap[letter].map((name) => {
+                    return (
+                      <Button className="name-item">
+                        {name}({images[name].num})
+                      </Button>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

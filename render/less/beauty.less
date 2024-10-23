@@ -1,0 +1,52 @@
+.section-beauty {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+
+  .letter-map {
+    background-color: @background-1;
+    display: flex;
+    padding: 10px 0px 10px 10px;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 20px;
+
+    .letter {
+      color: #8abbff;
+      text-align: center;
+    }
+  }
+
+  .name-list {
+    .name-block {
+      display: grid;
+
+      gap: 20px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      @media (min-width: 768px) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      @media (min-width: 1024px) {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .name-item {
+        display: flex;
+        align-items: center;
+
+        background-color: @background-2;
+        padding: 16px;
+        border-radius: 6px;
+        box-shadow:
+          0 4px 6px -1px rgb(0 0 0 / 0.1),
+          0 2px 4px -2px rgb(0 0 0 / 0.1);
+
+        &:hover {
+          background-color: @background-3;
+        }
+      }
+    }
+  }
+}

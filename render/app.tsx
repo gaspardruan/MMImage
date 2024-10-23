@@ -33,9 +33,9 @@ const loadTheme = (_theme: string, isUsingSystemTheme: boolean) => {
 };
 
 const isLaunchedInOneDay = (time1: number, time2: number): boolean => {
-  const oneDay = 24 * 60 * 60 * 1000;
+  const halfDay = 24 * 60 * 60 * 1000;
   const diff = Math.abs(time1 - time2);
-  return diff <= oneDay;
+  return diff <= halfDay;
 };
 
 const App = () => {
