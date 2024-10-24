@@ -1,3 +1,8 @@
+import { useImageState } from '../state/image';
+import { ImageGrid } from './image-grid';
+
 export const SectionCollection = () => {
-  return `Collection`;
+  const { collection } = useImageState();
+
+  return <ImageGrid images={collection} />;
 };

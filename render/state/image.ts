@@ -5,6 +5,7 @@ import { ImageSuit, BeautySuit } from '../../typings/interface';
 
 interface ImageState {
   latest: ImageSuit[];
+  collection: ImageSuit[];
   beauty: BeautySuit;
   lastUpdateTime: number;
   setData: (latest: ImageSuit[], beauty: BeautySuit) => void;
@@ -17,6 +18,7 @@ export const useImageState = create<ImageState>()(
   persist(
     (set) => ({
       latest: [],
+      collection: [],
       beauty: { names: {}, images: {} },
       lastUpdateTime: 0,
       setData: (latest, beauty) => set({ latest, beauty }),
