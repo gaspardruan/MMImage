@@ -20,3 +20,67 @@
     }
   }
 }
+
+.view-modal {
+  .control-back-wrapper {
+    position: absolute;
+
+    color: @foreground-1;
+
+    width: 100%;
+    z-index: 4;
+    top: 0px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+
+    .control-back {
+      padding: 16px;
+    }
+  }
+
+  .control-index {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 4;
+    padding: 20px;
+    color: @foreground-1;
+  }
+
+  .control-footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    z-index: 4;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    color: @foreground-1;
+
+    .control-play {
+      padding: 18px;
+    }
+
+    .control-group {
+      display: flex;
+      column-gap: 8px;
+
+      .control-fullscreen {
+        padding: 20px;
+      }
+
+      .control-collect {
+        padding: 20px;
+      }
+
+      .control-setting {
+        padding: 20px;
+      }
+    }
+  }
+}
