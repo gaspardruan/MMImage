@@ -4,6 +4,8 @@ import { getCoverURL, hitBottom } from '../utils';
 import { LIST_STEP, ImageSuit } from '../../typings/interface';
 import { ViewModal } from './view-modal';
 
+import LazyLoad from 'react-lazyload';
+
 interface ImageGridProps {
   images: ImageSuit[];
   Header?: ComponentType;
@@ -57,13 +59,20 @@ export const ImageGrid = ({ images, Header }: ImageGridProps) => {
         {Header && <Header />}
         <div className="image-grid">
           {shownImages.map((img) => (
-            <img
+            <LazyLoad
               key={img.id}
-              src={getCoverURL(img.id, img.prefix)}
-              onClick={() => {
-                handleImageClick(img);
-              }}
-            />
+              offset={50}
+              resize={true}
+              overflow={true}
+              once={true}
+            >
+              <img
+                src={getCoverURL(img.id, img.prefix)}
+                onClick={() => {
+                  handleImageClick(img);
+                }}
+              />
+            </LazyLoad>
           ))}
         </div>
       </div>

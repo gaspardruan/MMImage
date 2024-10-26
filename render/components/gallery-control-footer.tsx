@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { useCallback, memo, useState } from 'react';
 import { Icon } from '@blueprintjs/core';
 
 interface GalleryControlFooterProps {
@@ -45,15 +45,15 @@ export const GalleryControlFooter = ({
 }: GalleryControlFooterProps) => {
   const [play, setPlay] = useState<boolean>(false);
 
-  const handleStopClick = () => {
+  const handleStopClick = useCallback(() => {
     onClickStop();
     setPlay(false);
-  };
+  }, [onClickStop]);
 
-  const handlePlayClick = () => {
+  const handlePlayClick = useCallback(() => {
     onClickPlay();
     setPlay(true);
-  };
+  }, [onClickPlay]);
 
   return (
     <div className="control-footer">
