@@ -5,18 +5,18 @@ interface GalleryControlProps {
   count: number;
   getIndex: () => number;
   onClickBack: () => void;
-  onClickFullscreen: () => void;
   onClickCollect: () => void;
   onClickPlay: () => void;
+  onClickStop: () => void;
 }
 
 export const GalleryControl = ({
   count,
   getIndex,
   onClickBack,
-  onClickFullscreen,
   onClickCollect,
   onClickPlay,
+  onClickStop,
 }: GalleryControlProps) => {
   return (
     <>
@@ -27,8 +27,8 @@ export const GalleryControl = ({
       />
       <GalleryControlFooter
         onClickCollect={onClickCollect}
-        onClickFullscreen={onClickFullscreen}
         onClickPlay={onClickPlay}
+        onClickStop={onClickStop}
       />
     </>
   );

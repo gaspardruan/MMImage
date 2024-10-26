@@ -1,10 +1,10 @@
-import { memo } from 'react';
+import { memo, useState } from 'react';
 import { Icon } from '@blueprintjs/core';
 
 interface GalleryControlFooterProps {
-  onClickFullscreen: () => void;
   onClickCollect: () => void;
   onClickPlay: () => void;
+  onClickStop: () => void;
 }
 
 const PlayIcon = memo(({ onClick }: { onClick: () => void }) => {
@@ -14,15 +14,10 @@ const PlayIcon = memo(({ onClick }: { onClick: () => void }) => {
   );
 });
 
-const FullscreenIcon = memo(({ onClick }: { onClick: () => void }) => {
+const StopIcon = memo(({ onClick }: { onClick: () => void }) => {
   console.log('render icon');
   return (
-    <Icon
-      className="control-fullscreen"
-      onClick={onClick}
-      icon="fullscreen"
-      size={20}
-    />
+    <Icon className="control-stop" onClick={onClick} icon="pause" size={24} />
   );
 });
 
@@ -44,17 +39,31 @@ const SettingIcon = memo(() => {
 });
 
 export const GalleryControlFooter = ({
-  onClickFullscreen,
   onClickCollect,
   onClickPlay,
+  onClickStop,
 }: GalleryControlFooterProps) => {
+  const [play, setPlay] = useState<boolean>(false);
+
+  const handleStopClick = () => {
+    onClickStop();
+    setPlay(false);
+  };
+
+  const handlePlayClick = () => {
+    onClickPlay();
+    setPlay(true);
+  };
+
   return (
     <div className="control-footer">
-      <PlayIcon onClick={onClickPlay} />
+      {play ? (
+        <StopIcon onClick={handleStopClick} />
+      ) : (
+        <PlayIcon onClick={handlePlayClick} />
+      )}
 
       <div className="control-group">
-        <FullscreenIcon onClick={onClickFullscreen} />
-
         <CollectIcon onClick={onClickCollect} />
 
         <SettingIcon />

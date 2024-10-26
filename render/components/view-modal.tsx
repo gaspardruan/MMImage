@@ -23,8 +23,8 @@ export const ViewModal = ({ isOpen, data, onClose }: ViewModalPropas) => {
         count={images.length}
         onClickBack={onClose}
         onClickPlay={handlePlayClick}
+        onClickStop={handleStopClick}
         onClickCollect={handleCollectClick}
-        onClickFullscreen={handleFullscreenClick}
       />
     );
   };
@@ -38,8 +38,8 @@ export const ViewModal = ({ isOpen, data, onClose }: ViewModalPropas) => {
     galleryRef.current!.play();
   };
 
-  const handleFullscreenClick = () => {
-    galleryRef.current!.fullScreen();
+  const handleStopClick = () => {
+    galleryRef.current!.pause();
   };
 
   const handleCollectClick = () => {
