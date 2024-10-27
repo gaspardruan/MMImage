@@ -5,9 +5,9 @@ import { ImageGrid } from './image-grid';
 export const SectionCollection = () => {
   const { collection } = useImageState();
 
-  return collection.length === 0 ? (
+  return collection.size === 0 ? (
     <NonIdealState title="Your collection is empty" icon="inbox" />
   ) : (
-    <ImageGrid images={collection} />
+    <ImageGrid images={Array.from(collection.values())} />
   );
 };

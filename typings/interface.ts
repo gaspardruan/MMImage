@@ -34,3 +34,5 @@ export interface ImageShow {
   original: string;
   thumbnail: string;
 }
+
+export type ImageLiked = Map<string, ImageSuit>;

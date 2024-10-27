@@ -1,8 +1,11 @@
 import { useCallback, memo, useState } from 'react';
 import { Icon } from '@blueprintjs/core';
+import { useImageState } from '../state/image';
+import { ImageSuit } from '../../typings/interface';
+import { getId } from '../utils';
 
 interface GalleryControlFooterProps {
-  onClickCollect: () => void;
+  imageSuit: ImageSuit;
   onClickPlay: () => void;
   onClickStop: () => void;
 }
@@ -33,17 +36,33 @@ const CollectIcon = memo(({ onClick }: { onClick: () => void }) => {
   );
 });
 
+const CollectedIcon = memo(({ onClick }: { onClick: () => void }) => {
+  console.log('render icon');
+  return (
+    <Icon
+      className="control-collected"
+      onClick={onClick}
+      icon="star"
+      size={20}
+    />
+  );
+});
+
 const SettingIcon = memo(() => {
   console.log('render icon');
   return <Icon className="control-setting" icon="cog" size={20} />;
 });
 
 export const GalleryControlFooter = ({
-  onClickCollect,
+  imageSuit,
   onClickPlay,
   onClickStop,
 }: GalleryControlFooterProps) => {
   const [play, setPlay] = useState<boolean>(false);
+
+  const { collection, like, dislike } = useImageState();
+
+  const liked = collection.has(getId(imageSuit));
 
   const handleStopClick = useCallback(() => {
     onClickStop();
@@ -55,6 +74,14 @@ export const GalleryControlFooter = ({
     setPlay(true);
   }, [onClickPlay]);
 
+  const handleClickCollect = useCallback(() => {
+    like(imageSuit);
+  }, [like, imageSuit]);
+
+  const handleClickCollected = useCallback(() => {
+    dislike(imageSuit);
+  }, [dislike, imageSuit]);
+
   return (
     <div className="control-footer">
       {play ? (
@@ -64,7 +91,11 @@ export const GalleryControlFooter = ({
       )}
 
       <div className="control-group">
-        <CollectIcon onClick={onClickCollect} />
+        {liked ? (
+          <CollectedIcon onClick={handleClickCollected} />
+        ) : (
+          <CollectIcon onClick={handleClickCollect} />
+        )}
 
         <SettingIcon />
       </div>

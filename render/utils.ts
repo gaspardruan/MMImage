@@ -37,3 +37,7 @@ export function getImages(suit: ImageSuit): ImageShow[] {
 export function hitBottom(el: HTMLDivElement) {
   return el.scrollTop === el.scrollHeight - el.offsetHeight;
 }
+
+export function getId(suit: ImageSuit) {
+  return `${suit.prefix}-${suit.id}`;
+}

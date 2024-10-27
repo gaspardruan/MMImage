@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useCallback, useRef } from 'react';
 import { Overlay2 } from '@blueprintjs/core';
 import ImageGallery from 'react-image-gallery';
 import { ImageSuit } from '../../typings/interface';
@@ -19,12 +19,12 @@ export const ViewModal = ({ isOpen, data, onClose }: ViewModalPropas) => {
   const customControl = () => {
     return (
       <GalleryControl
+        imageSuit={data}
         getIndex={getIndex}
         count={images.length}
         onClickBack={onClose}
         onClickPlay={handlePlayClick}
         onClickStop={handleStopClick}
-        onClickCollect={handleCollectClick}
       />
     );
   };
@@ -34,16 +34,12 @@ export const ViewModal = ({ isOpen, data, onClose }: ViewModalPropas) => {
     return 0;
   };
 
-  const handlePlayClick = () => {
+  const handlePlayClick = useCallback(() => {
     galleryRef.current!.play();
-  };
+  }, []);
 
   const handleStopClick = () => {
     galleryRef.current!.pause();
-  };
-
-  const handleCollectClick = () => {
-    console.log('Collect click');
   };
 
   return (

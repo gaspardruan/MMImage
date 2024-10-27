@@ -12,10 +12,7 @@ interface ImageGridProps {
 }
 
 export const ImageGrid = ({ images, Header }: ImageGridProps) => {
-  const [index, setIndex] = useState(2);
-  const [shownImages, setShownImages] = useState(
-    images.slice(0, LIST_STEP * (index - 1)),
-  );
+  const [index, setIndex] = useState(1);
   const [open, setOpen] = useState(false);
   const [data, setData] = useState<ImageSuit>({
     id: 0,
@@ -24,6 +21,8 @@ export const ImageGrid = ({ images, Header }: ImageGridProps) => {
     prefix: '',
     time: new Date(0),
   });
+
+  const shownImages = () => images.slice(0, LIST_STEP * index);
 
   const handleImageClick = (img: ImageSuit) => {
     setOpen(true);
@@ -42,7 +41,6 @@ export const ImageGrid = ({ images, Header }: ImageGridProps) => {
     const handler = () => {
       if (hitBottom(container) && images.length - (index - 1) * LIST_STEP > 0) {
         setIndex(index + 1);
-        setShownImages(images.slice(0, LIST_STEP * index));
       }
     };
 
@@ -58,7 +56,7 @@ export const ImageGrid = ({ images, Header }: ImageGridProps) => {
       <div className="scroll-container" ref={containerRef}>
         {Header && <Header />}
         <div className="image-grid">
-          {shownImages.map((img) => (
+          {shownImages().map((img) => (
             <LazyLoad
               key={img.id}
               offset={50}

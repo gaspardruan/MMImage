@@ -1,20 +1,21 @@
+import { ImageSuit } from '../../typings/interface';
 import { GalleryControlFooter } from './gallery-control-footer';
 import { GalleryControlHeader } from './gallery-control-header';
 
 interface GalleryControlProps {
   count: number;
+  imageSuit: ImageSuit;
   getIndex: () => number;
   onClickBack: () => void;
-  onClickCollect: () => void;
   onClickPlay: () => void;
   onClickStop: () => void;
 }
 
 export const GalleryControl = ({
   count,
+  imageSuit,
   getIndex,
   onClickBack,
-  onClickCollect,
   onClickPlay,
   onClickStop,
 }: GalleryControlProps) => {
@@ -26,7 +27,7 @@ export const GalleryControl = ({
         onClickBack={onClickBack}
       />
       <GalleryControlFooter
-        onClickCollect={onClickCollect}
+        imageSuit={imageSuit}
         onClickPlay={onClickPlay}
         onClickStop={onClickStop}
       />
