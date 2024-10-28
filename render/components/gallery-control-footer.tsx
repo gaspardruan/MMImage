@@ -1,8 +1,14 @@
 import { useCallback, memo, useState } from 'react';
-import { Icon } from '@blueprintjs/core';
+import {
+  Icon,
+  Popover,
+  PopoverInteractionKind,
+  Slider,
+} from '@blueprintjs/core';
 import { useImageState } from '../state/image';
 import { ImageSuit } from '../../typings/interface';
 import { getId } from '../utils';
+import { useControlState } from '../state/control';
 
 interface GalleryControlFooterProps {
   imageSuit: ImageSuit;
@@ -48,9 +54,9 @@ const CollectedIcon = memo(({ onClick }: { onClick: () => void }) => {
   );
 });
 
-const SettingIcon = memo(() => {
+const TimeIcon = memo(() => {
   console.log('render icon');
-  return <Icon className="control-setting" icon="cog" size={20} />;
+  return <Icon className="control-time" icon="time" size={20} />;
 });
 
 export const GalleryControlFooter = ({
@@ -61,6 +67,8 @@ export const GalleryControlFooter = ({
   const [play, setPlay] = useState<boolean>(false);
 
   const { collection, like, dislike } = useImageState();
+
+  const { interval, setInterval } = useControlState();
 
   const liked = collection.has(getId(imageSuit));
 
@@ -82,6 +90,29 @@ export const GalleryControlFooter = ({
     dislike(imageSuit);
   }, [dislike, imageSuit]);
 
+  const handleTimeChange = (value: number) => {
+    setInterval(value);
+  };
+
+  const timeSlider = () => {
+    return (
+      <div className="control-ts-wrapper">
+        {interval.toFixed(1)}s
+        <Slider
+          min={0.5}
+          max={5}
+          stepSize={0.1}
+          vertical
+          value={interval}
+          onChange={handleTimeChange}
+          labelValues={[5]}
+          labelRenderer={false}
+          className="control-ts"
+        />
+      </div>
+    );
+  };
+
   return (
     <div className="control-footer">
       {play ? (
@@ -96,8 +127,14 @@ export const GalleryControlFooter = ({
         ) : (
           <CollectIcon onClick={handleClickCollect} />
         )}
-
-        <SettingIcon />
+        <Popover
+          content={timeSlider()}
+          placement="top"
+          minimal
+          interactionKind={PopoverInteractionKind.HOVER}
+        >
+          <TimeIcon />
+        </Popover>
       </div>
     </div>
   );

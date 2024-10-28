@@ -5,6 +5,7 @@ import { ImageSuit } from '../../typings/interface';
 
 import { getImages } from '../utils';
 import { GalleryControl } from './gallery-control';
+import { useControlState } from '../state/control';
 
 interface ViewModalPropas {
   isOpen: boolean;
@@ -15,6 +16,8 @@ interface ViewModalPropas {
 export const ViewModal = ({ isOpen, data, onClose }: ViewModalPropas) => {
   const images = getImages(data);
   const galleryRef = useRef<ImageGallery>(null);
+
+  const { interval } = useControlState();
 
   const customControl = () => {
     return (
@@ -55,6 +58,7 @@ export const ViewModal = ({ isOpen, data, onClose }: ViewModalPropas) => {
           items={images}
           thumbnailPosition="left"
           slideDuration={250}
+          slideInterval={interval * 1000}
           infinite={false}
           lazyLoad={true}
           showPlayButton={false}
