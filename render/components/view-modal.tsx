@@ -1,6 +1,9 @@
 import { useCallback, useRef } from 'react';
 import { Overlay2 } from '@blueprintjs/core';
-import ImageGallery from 'react-image-gallery';
+import ImageGallery, { ReactImageGalleryItem } from 'react-image-gallery';
+
+import { Item } from './item';
+
 import { ImageSuit } from '../../typings/interface';
 
 import { getImages } from '../utils';
@@ -30,6 +33,10 @@ export const ViewModal = ({ isOpen, data, onClose }: ViewModalPropas) => {
         onClickStop={handleStopClick}
       />
     );
+  };
+
+  const renderItem = (item: ReactImageGalleryItem) => {
+    return <Item original={item.original} />;
   };
 
   const getIndex = () => {
@@ -64,6 +71,7 @@ export const ViewModal = ({ isOpen, data, onClose }: ViewModalPropas) => {
           showPlayButton={false}
           showFullscreenButton={false}
           renderCustomControls={customControl}
+          renderItem={renderItem}
         />
       </div>
     </Overlay2>

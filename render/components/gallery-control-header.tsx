@@ -23,7 +23,7 @@ export const GalleryControlHeader = ({
       <div className="control-index">
         {getIndex() + 1} / {count}
       </div>
-      <div className="control-back-wrapper">
+      <div className="control-back-wrapper show">
         <BackIcon onClick={onClickBack} />
       </div>
     </>

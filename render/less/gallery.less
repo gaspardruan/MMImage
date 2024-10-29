@@ -25,6 +25,15 @@
   }
 }
 
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .view-modal {
   .control-back-wrapper {
     position: absolute;
@@ -39,6 +48,20 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
+
+    opacity: 0;
+
+    transition: all 0.3s ease-out;
+
+    @media (hover: hover) {
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    // &:hover {
+    //   opacity: 1;
+    // }
 
     .control-back {
       padding: 16px;
@@ -65,6 +88,16 @@
     justify-content: space-between;
 
     color: @foreground-1;
+
+    opacity: 0;
+
+    transition: all 0.3s ease-out;
+
+    @media (hover: hover) {
+      &:hover {
+        opacity: 1;
+      }
+    }
 
     .control-play {
       padding: 18px;
@@ -125,4 +158,16 @@
       height: 12px;
     }
   }
+}
+
+.image-gallery-right-nav {
+  outline: none !important;
+}
+
+.image-gallery-left-nav {
+  outline: none !important;
+}
+
+.image-gallery-icon {
+  color: @foreground-1;
 }
