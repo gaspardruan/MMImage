@@ -30,6 +30,30 @@ const StopIcon = memo(({ onClick }: { onClick: () => void }) => {
   );
 });
 
+const AddColumnIcon = memo(({ onClick }: { onClick: () => void }) => {
+  console.log('render icon');
+  return (
+    <Icon
+      className="control-add-column"
+      onClick={onClick}
+      icon="add-column-left"
+      size={20}
+    />
+  );
+});
+
+const RemoveColumnIcon = memo(({ onClick }: { onClick: () => void }) => {
+  console.log('render icon');
+  return (
+    <Icon
+      className="control-remove-column"
+      onClick={onClick}
+      icon="remove-column-left"
+      size={20}
+    />
+  );
+});
+
 const CollectIcon = memo(({ onClick }: { onClick: () => void }) => {
   console.log('render icon');
   return (
@@ -68,7 +92,8 @@ export const GalleryControlFooter = ({
 
   const { collection, like, dislike } = useImageState();
 
-  const { interval, setInterval } = useControlState();
+  const { interval, showThumbnail, setShowThumbnail, setInterval } =
+    useControlState();
 
   const liked = collection.has(getId(imageSuit));
 
@@ -81,6 +106,14 @@ export const GalleryControlFooter = ({
     onClickPlay();
     setPlay(true);
   }, [onClickPlay]);
+
+  const handleAddColumnClick = useCallback(() => {
+    setShowThumbnail(true);
+  }, [setShowThumbnail]);
+
+  const handleRemoveColumnClick = useCallback(() => {
+    setShowThumbnail(false);
+  }, [setShowThumbnail]);
 
   const handleClickCollect = useCallback(() => {
     like(imageSuit);
@@ -127,6 +160,13 @@ export const GalleryControlFooter = ({
         ) : (
           <CollectIcon onClick={handleClickCollect} />
         )}
+
+        {showThumbnail ? (
+          <RemoveColumnIcon onClick={handleRemoveColumnClick} />
+        ) : (
+          <AddColumnIcon onClick={handleAddColumnClick} />
+        )}
+
         <Popover
           content={timeSlider()}
           placement="top"

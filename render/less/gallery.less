@@ -10,13 +10,23 @@
       background-color: @background-2;
     }
 
+    &.image-gallery-thumbnails-left {
+      display: flex;
+      flex-direction: row;
+    }
+
     .image-gallery-slide-wrapper {
       height: 100%;
       align-content: center;
+
+      &.image-gallery-thumbnails-left {
+        width: 100%;
+      }
     }
 
     .image-gallery-thumbnails-wrapper {
       .image-gallery-thumbnails {
+        position: inherit;
         .active {
           border-color: @foreground-2;
         }
@@ -120,6 +130,14 @@
       }
 
       .control-collected {
+        padding: 20px;
+      }
+
+      .control-add-column {
+        padding: 20px;
+      }
+
+      .control-remove-column {
         padding: 20px;
       }
 

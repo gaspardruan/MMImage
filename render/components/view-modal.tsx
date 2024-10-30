@@ -20,7 +20,7 @@ export const ViewModal = ({ isOpen, data, onClose }: ViewModalPropas) => {
   const images = getImages(data);
   const galleryRef = useRef<ImageGallery>(null);
 
-  const { interval } = useControlState();
+  const { interval, showThumbnail } = useControlState();
 
   const customControl = () => {
     return (
@@ -70,6 +70,7 @@ export const ViewModal = ({ isOpen, data, onClose }: ViewModalPropas) => {
           lazyLoad={true}
           showPlayButton={false}
           showFullscreenButton={false}
+          showThumbnails={showThumbnail}
           renderCustomControls={customControl}
           renderItem={renderItem}
         />
