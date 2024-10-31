@@ -3,12 +3,10 @@ import { createWindow } from './window';
 import { IpcEvents } from '../typings/ipc-events';
 import { setupData } from './data';
 import { setupMenu } from './menu';
-import { setupAboutPanel } from './about';
 
 async function onReady() {
   setupNativeTheme();
   setupMenu();
-  setupAboutPanel();
   setupData();
 
   createWindow();

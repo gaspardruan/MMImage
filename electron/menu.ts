@@ -1,4 +1,4 @@
-import { Menu, MenuItemConstructorOptions, shell } from 'electron';
+import { Menu, MenuItemConstructorOptions } from 'electron';
 
 export const setupMenu = () => {
   const menu: MenuItemConstructorOptions[] = [
@@ -17,21 +17,6 @@ export const setupMenu = () => {
 
         {
           role: 'toggleDevTools',
-        },
-      ],
-    },
-    {
-      label: 'More',
-      submenu: [
-        {
-          label: 'About',
-          role: 'about',
-        },
-        {
-          label: 'Learn More',
-          click: async () => {
-            await shell.openExternal('https://github.com/gaspardruan/MMImage');
-          },
         },
       ],
     },

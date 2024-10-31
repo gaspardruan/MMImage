@@ -1,6 +1,6 @@
 import { BrowserWindow, shell } from 'electron';
 import path from 'path';
-import { VITE_DEV_SERVER_URL, RENDERER_DIST, __dirname } from './env';
+import { VITE_DEV_SERVER_URL, RENDERER_DIST, __dirname, IS_DEV } from './env';
 
 function getMainWindowOptions(): Electron.BrowserWindowConstructorOptions {
   return {
@@ -30,6 +30,8 @@ export function createWindow() {
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
+
+  if (!IS_DEV) mainWindow.setMenuBarVisibility(false);
 
   // Open urls in the user's browser
   mainWindow.webContents.setWindowOpenHandler((edata) => {
