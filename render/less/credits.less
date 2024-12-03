@@ -1,0 +1,45 @@
+.section-credits {
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  overflow: auto;
+  color: @text-color-3;
+  box-sizing: border-box;
+
+  .bp5-callout {
+    max-width: 850px;
+  }
+
+  .contributors {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+
+    .contributor {
+      width: 200px;
+      height: 120px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px;
+      margin: 0 10px 10px 0;
+      display: flex;
+      justify-content: flex-start;
+      cursor: pointer;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      .avatar {
+        height: 100px;
+        width: 100px;
+        background-size: contain;
+        margin-right: 10px;
+      }
+
+      .details {
+        max-width: 190px;
+        overflow: auto;
+      }
+    }
+  }
+}

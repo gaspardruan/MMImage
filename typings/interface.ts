@@ -2,7 +2,7 @@ export enum Section {
   Explore = '探索',
   Beauty = '模特',
   Collection = '收藏',
-  Settings = '设置',
+  Credits = '贡献',
 }
 
 export const LIST_STEP = 24;
@@ -36,3 +36,9 @@ export interface ImageShow {
 }
 
 export type ImageLiked = Map<string, ImageSuit>;
+
+export interface Contributor {
+  name: string;
+  avatar: string;
+  link: string;
+}

@@ -3,7 +3,7 @@ import { Section } from '../../typings/interface';
 import { useNavigationStore } from '../state/navigation';
 
 const menuGroupMain = [Section.Explore, Section.Beauty, Section.Collection];
-const menuGroupUtil = [Section.Settings];
+const menuGroupUtil = [Section.Credits];
 
 export const LeftPanel = () => {
   const { activeSection, setSection } = useNavigationStore();
@@ -15,9 +15,9 @@ export const LeftPanel = () => {
       case Section.Beauty:
         return 'team';
       case Section.Collection:
+        return 'star';
+      case Section.Credits:
         return 'heart';
-      case Section.Settings:
-        return 'cog';
       default:
         return 'cog';
     }
