@@ -32,11 +32,9 @@
     target: ['AppImage'],
     artifactName: '${productName}-Linux-${version}.${ext}',
   },
-  publish: [
-    {
-      provider: 'github',
-      owner: 'gaspardruan',
-      repo: 'MMImage',
-    },
-  ],
+  publish: {
+    provider: 'github',
+    owner: 'gaspardruan',
+    repo: 'MMImage',
+  },
 }
