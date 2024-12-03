@@ -1,10 +1,10 @@
 # MMImage
 
+This is an application for viewing beauty pictures.
+
+![screenshot](https://github.com/user-attachments/assets/4b77aff1-f809-4467-a24a-01b17e08de60)
+
+
 ## TODO
 
-1. add back button from modal
-2. custom nav button
-3. ability to zoom the image
-4. settings page
-5. collection page
-6. go back to last view place
+- add credits page
