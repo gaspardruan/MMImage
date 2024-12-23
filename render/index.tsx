@@ -12,3 +12,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     </OverlaysProvider>
   </React.StrictMode>,
 );
+
+postMessage({ payload: 'removeLoading' }, '*');
