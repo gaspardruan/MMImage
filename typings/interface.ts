@@ -2,7 +2,6 @@ export enum Section {
   Explore = '探索',
   Beauty = '模特',
   Collection = '收藏',
-  Credits = '贡献',
 }
 
 export const LIST_STEP = 24;

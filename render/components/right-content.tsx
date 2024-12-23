@@ -4,7 +4,6 @@ import { useNavigationStore } from '../state/navigation';
 import { SectionBeauty } from './section-beauty';
 import { SectionCollection } from './section-collection';
 import { SectionExplore } from './section-explore';
-import { SectionCredits } from './section-credits';
 
 export const RightContent = () => {
   const { activeSection } = useNavigationStore();
@@ -19,10 +18,6 @@ export const RightContent = () => {
 
   if (activeSection === Section.Collection) {
     return <SectionCollection />;
-  }
-
-  if (activeSection === Section.Credits) {
-    return <SectionCredits />;
   }
 
   return null;

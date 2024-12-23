@@ -1,9 +1,8 @@
-import { IconName, MenuDivider, MenuItem } from '@blueprintjs/core';
+import { IconName, MenuItem } from '@blueprintjs/core';
 import { Section } from '../../typings/interface';
 import { useNavigationStore } from '../state/navigation';
 
 const menuGroupMain = [Section.Explore, Section.Beauty, Section.Collection];
-const menuGroupUtil = [Section.Credits];
 
 export const LeftPanel = () => {
   const { activeSection, setSection } = useNavigationStore();
@@ -16,8 +15,6 @@ export const LeftPanel = () => {
         return 'team';
       case Section.Collection:
         return 'star';
-      case Section.Credits:
-        return 'heart';
       default:
         return 'cog';
     }
@@ -42,8 +39,6 @@ export const LeftPanel = () => {
   return (
     <>
       <ul>{renderMenuItem(menuGroupMain)}</ul>
-      <MenuDivider />
-      <ul>{renderMenuItem(menuGroupUtil)}</ul>
     </>
   );
 };
