@@ -1,14 +1,23 @@
-import { MenuItem, Icon, MaybeElement } from '@blueprintjs/core';
+import {
+  MenuItem,
+  Icon,
+  MaybeElement,
+  Overlay2,
+  Card,
+} from '@blueprintjs/core';
 import { Section } from '../../typings/interface';
 import { useNavigationStore } from '../state/navigation';
 import { useGlobalStore } from '../state/global';
 import { DefaultThemes } from '../../typings/themes-defaults';
+import { useState } from 'react';
 
 const menuGroupMain = [Section.Explore, Section.Beauty, Section.Collection];
 
 export const LeftPanel = () => {
   const { activeSection, setSection } = useNavigationStore();
   const { theme, setTheme } = useGlobalStore();
+
+  const [isOpen, setIsOpen] = useState(false);
 
   const getIconForSection = (name: Section): MaybeElement => {
     switch (name) {
@@ -61,9 +70,16 @@ export const LeftPanel = () => {
           )}
         </div>
         <div className="icon-item">
-          <Icon icon="help" size={20} />
+          <Icon icon="help" size={20} onClick={() => setIsOpen(true)} />
         </div>
       </div>
+      <Overlay2
+        className="hotkey-modal-wrapper"
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+      >
+        <Card className="hotkey-modal">fdsfa</Card>
+      </Overlay2>
     </>
   );
 };
