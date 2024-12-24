@@ -1,11 +1,14 @@
-import { IconName, MenuItem } from '@blueprintjs/core';
+import { IconName, MenuItem, Icon } from '@blueprintjs/core';
 import { Section } from '../../typings/interface';
 import { useNavigationStore } from '../state/navigation';
+import { useGlobalStore } from '../state/global';
+import { DefaultThemes } from '../../typings/themes-defaults';
 
 const menuGroupMain = [Section.Explore, Section.Beauty, Section.Collection];
 
 export const LeftPanel = () => {
   const { activeSection, setSection } = useNavigationStore();
+  const { theme, setTheme } = useGlobalStore();
 
   const getIconForSection = (name: Section): IconName => {
     switch (name) {
@@ -38,7 +41,16 @@ export const LeftPanel = () => {
 
   return (
     <>
-      <ul>{renderMenuItem(menuGroupMain)}</ul>
+      <div className="left-panel-top">
+        <ul>{renderMenuItem(menuGroupMain)}</ul>
+      </div>
+      <div className="left-panel-bottom">
+        {theme === DefaultThemes.DARK ? (
+          <Icon icon="flash" onClick={() => setTheme(DefaultThemes.LIGHT)} />
+        ) : (
+          <Icon icon="moon" onClick={() => setTheme(DefaultThemes.DARK)} />
+        )}
+      </div>
     </>
   );
 };

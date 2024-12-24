@@ -29,31 +29,45 @@ body {
     width: 250px;
     background-color: @background-1;
     user-select: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
-    ul {
-      list-style: none;
-      padding: 15px;
-      margin: 0;
+    .left-panel-top {
+      ul {
+        list-style: none;
+        padding: 15px;
+        margin: 0;
 
-      li {
-        font-size: 1rem;
-        padding-top: 8px;
-        padding-bottom: 8px;
-        color: @text-color-1;
-        opacity: 0.8;
+        li {
+          font-size: 1rem;
+          padding-top: 8px;
+          padding-bottom: 8px;
+          color: @text-color-1;
+          opacity: 0.8;
 
-        &:hover {
-          opacity: 1;
+          &:hover {
+            opacity: 1;
+          }
+
+          .bp5-menu-item {
+            outline: none;
+          }
         }
+      }
 
-        .bp5-menu-item {
-          outline: none;
-        }
+      .bp5-menu-divider {
+        margin: 0 5px;
       }
     }
 
-    .bp5-menu-divider {
-      margin: 0 5px;
+    .left-panel-bottom {
+      padding: 15px 22px;
+      color: @text-color-1;
+      opacity: 0.8;
+      &:hover {
+        opacity: 1;
+      }
     }
   }
 
