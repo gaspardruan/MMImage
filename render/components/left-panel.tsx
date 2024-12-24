@@ -1,15 +1,10 @@
-import {
-  MenuItem,
-  Icon,
-  MaybeElement,
-  Overlay2,
-  Card,
-} from '@blueprintjs/core';
+import { MenuItem, Icon, MaybeElement } from '@blueprintjs/core';
 import { Section } from '../../typings/interface';
 import { useNavigationStore } from '../state/navigation';
 import { useGlobalStore } from '../state/global';
 import { DefaultThemes } from '../../typings/themes-defaults';
 import { useState } from 'react';
+import { HelpPanel } from './help-panel';
 
 const menuGroupMain = [Section.Explore, Section.Beauty, Section.Collection];
 
@@ -73,13 +68,7 @@ export const LeftPanel = () => {
           <Icon icon="help" size={20} onClick={() => setIsOpen(true)} />
         </div>
       </div>
-      <Overlay2
-        className="hotkey-modal-wrapper"
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
-      >
-        <Card className="hotkey-modal">fdsfa</Card>
-      </Overlay2>
+      <HelpPanel isOpen={isOpen} setIsOpen={setIsOpen} />
     </>
   );
 };
