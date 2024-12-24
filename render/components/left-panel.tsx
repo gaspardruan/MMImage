@@ -1,4 +1,4 @@
-import { IconName, MenuItem, Icon } from '@blueprintjs/core';
+import { MenuItem, Icon, MaybeElement } from '@blueprintjs/core';
 import { Section } from '../../typings/interface';
 import { useNavigationStore } from '../state/navigation';
 import { useGlobalStore } from '../state/global';
@@ -10,16 +10,16 @@ export const LeftPanel = () => {
   const { activeSection, setSection } = useNavigationStore();
   const { theme, setTheme } = useGlobalStore();
 
-  const getIconForSection = (name: Section): IconName => {
+  const getIconForSection = (name: Section): MaybeElement => {
     switch (name) {
       case Section.Explore:
-        return 'drive-time';
+        return <Icon icon="search-around" size={20} />;
       case Section.Beauty:
-        return 'team';
+        return <Icon icon="team" size={20} />;
       case Section.Collection:
-        return 'star';
+        return <Icon icon="star" size={20} />;
       default:
-        return 'cog';
+        return <Icon icon="cog" size={20} />;
     }
   };
 
@@ -45,11 +45,24 @@ export const LeftPanel = () => {
         <ul>{renderMenuItem(menuGroupMain)}</ul>
       </div>
       <div className="left-panel-bottom">
-        {theme === DefaultThemes.DARK ? (
-          <Icon icon="flash" onClick={() => setTheme(DefaultThemes.LIGHT)} />
-        ) : (
-          <Icon icon="moon" onClick={() => setTheme(DefaultThemes.DARK)} />
-        )}
+        <div className="icon-item">
+          {theme === DefaultThemes.DARK ? (
+            <Icon
+              icon="flash"
+              size={20}
+              onClick={() => setTheme(DefaultThemes.LIGHT)}
+            />
+          ) : (
+            <Icon
+              icon="moon"
+              size={20}
+              onClick={() => setTheme(DefaultThemes.DARK)}
+            />
+          )}
+        </div>
+        <div className="icon-item">
+          <Icon icon="help" size={20} />
+        </div>
       </div>
     </>
   );

@@ -62,11 +62,22 @@ body {
     }
 
     .left-panel-bottom {
-      padding: 15px 22px;
+      padding: 15px;
       color: @text-color-1;
-      opacity: 0.8;
-      &:hover {
-        opacity: 1;
+
+      display: flex;
+      flex-direction: column;
+
+      .icon-item {
+        width: 30px;
+        height: 30px;
+        padding: 7px;
+        margin-top: 9px;
+
+        opacity: 0.8;
+        &:hover {
+          opacity: 1;
+        }
       }
     }
   }
