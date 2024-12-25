@@ -1,4 +1,4 @@
-import { MenuItem, Icon, MaybeElement } from '@blueprintjs/core';
+import { MenuItem, Icon, MaybeElement, Tooltip } from '@blueprintjs/core';
 import { Section } from '../../typings/interface';
 import { useNavigationStore } from '../state/navigation';
 import { useGlobalStore } from '../state/global';
@@ -43,13 +43,17 @@ export const LeftPanel = () => {
     });
   };
 
+  const openHomePage = () => {
+    window.open('https://github.com/gaspardruan/MMImage', '_blank');
+  };
+
   return (
     <>
       <div className="left-panel-top">
         <ul>{renderMenuItem(menuGroupMain)}</ul>
       </div>
       <div className="left-panel-bottom">
-        <div className="icon-item">
+        <Tooltip content="主题" className="icon-item">
           {theme === DefaultThemes.DARK ? (
             <Icon
               icon="flash"
@@ -63,10 +67,14 @@ export const LeftPanel = () => {
               onClick={() => setTheme(DefaultThemes.DARK)}
             />
           )}
-        </div>
-        <div className="icon-item">
+        </Tooltip>
+
+        <Tooltip content="快捷键" className="icon-item">
           <Icon icon="help" size={20} onClick={() => setIsOpen(true)} />
-        </div>
+        </Tooltip>
+        <Tooltip content="Github主页" className="icon-item">
+          <Icon icon="link" size={20} onClick={openHomePage} />
+        </Tooltip>
       </div>
       <HelpPanel isOpen={isOpen} setIsOpen={setIsOpen} />
     </>
