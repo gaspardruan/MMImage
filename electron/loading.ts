@@ -27,8 +27,6 @@ const getForeBackColor = () => {
     }
   }
 
-  console.log('HERE');
-
   return { foreColor, backColor };
 };
 

@@ -17,21 +17,21 @@ interface GalleryControlFooterProps {
 }
 
 const PlayIcon = memo(({ onClick }: { onClick: () => void }) => {
-  console.log('render icon');
+  // console.log('render icon');
   return (
     <Icon className="control-play" onClick={onClick} icon="play" size={24} />
   );
 });
 
 const StopIcon = memo(({ onClick }: { onClick: () => void }) => {
-  console.log('render icon');
+  // console.log('render icon');
   return (
     <Icon className="control-stop" onClick={onClick} icon="pause" size={24} />
   );
 });
 
 const AddColumnIcon = memo(({ onClick }: { onClick: () => void }) => {
-  console.log('render icon');
+  // console.log('render icon');
   return (
     <Icon
       className="control-add-column"
@@ -43,7 +43,7 @@ const AddColumnIcon = memo(({ onClick }: { onClick: () => void }) => {
 });
 
 const RemoveColumnIcon = memo(({ onClick }: { onClick: () => void }) => {
-  console.log('render icon');
+  // console.log('render icon');
   return (
     <Icon
       className="control-remove-column"
@@ -55,7 +55,7 @@ const RemoveColumnIcon = memo(({ onClick }: { onClick: () => void }) => {
 });
 
 const CollectIcon = memo(({ onClick }: { onClick: () => void }) => {
-  console.log('render icon');
+  // console.log('render icon');
   return (
     <Icon
       className="control-collect"
@@ -67,7 +67,7 @@ const CollectIcon = memo(({ onClick }: { onClick: () => void }) => {
 });
 
 const CollectedIcon = memo(({ onClick }: { onClick: () => void }) => {
-  console.log('render icon');
+  // console.log('render icon');
   return (
     <Icon
       className="control-collected"
@@ -79,7 +79,7 @@ const CollectedIcon = memo(({ onClick }: { onClick: () => void }) => {
 });
 
 const TimeIcon = memo(() => {
-  console.log('render icon');
+  // console.log('render icon');
   return <Icon className="control-time" icon="time" size={20} />;
 });
 
