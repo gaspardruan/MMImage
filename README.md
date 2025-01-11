@@ -6,4 +6,4 @@ This is an application for viewing beauty pictures. [Download now](https://githu
 
 ## More
 
-See web version at [MMImage-Web](https://github.com/gaspardruan/MMImage-Web)
+See web version at [MMImage-Web](https://github.com/gaspardruan/MMImage-Web).
