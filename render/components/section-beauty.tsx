@@ -63,6 +63,7 @@ export const SectionBeauty = () => {
                     {nameMap[letter].map((name) => {
                       return (
                         <Button
+                          key={name}
                           className="name-item"
                           onClick={() => handleNameClick(name)}
                         >

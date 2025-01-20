@@ -35,7 +35,9 @@ export function getImages(suit: ImageSuit): ImageShow[] {
 }
 
 export function hitBottom(el: HTMLDivElement) {
-  return el.scrollTop === el.scrollHeight - el.offsetHeight;
+  // return el.scrollTop === el.scrollHeight - el.offsetHeight;
+  // fix: 1 rounded value possibly leads to 0.5px difference, so use 2px
+  return Math.abs(el.scrollHeight - el.scrollTop - el.offsetHeight) <= 2;
 }
 
 export function getId(suit: ImageSuit) {
