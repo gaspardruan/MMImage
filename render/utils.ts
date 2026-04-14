@@ -1,6 +1,6 @@
 import { ImageSuit, ImageShow } from './../typings/interface';
 
-export const BASE_URL = 'http://newxiuren.com/uploadfiles/';
+export const BASE_URL = 'http://newxiuren.cn/uploadfiles/';
 
 export function getYearFromId(id: number): string {
   // 获取数字前4位
